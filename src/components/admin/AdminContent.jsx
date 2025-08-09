@@ -1,8 +1,9 @@
 
 function AdminContent() {
+
   return (
     <>
-     <h1>admin Content</h1>
+     <h1>hello</h1>
     </>
   )
 }
