@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import MenuIcon from '@mui/icons-material/Menu'
 import Cookies from 'js-cookie'
 import { useState } from 'react'
+import beneficiaryLogo from "../assets/beneficiary-logo.png"
 
 const Navbar = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -63,7 +64,7 @@ const Navbar = () => {
 
   return (
     <>
-      <AppBar position="sticky" sx={{ width: "100%" }}>
+      <AppBar position="sticky" sx={{ width: "100%", zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Toolbar
           sx={{
             display: "flex",
@@ -73,8 +74,8 @@ const Navbar = () => {
           }}
         >
           <Typography variant="h5" fontWeight={700} marginLeft={3.6} color="#8BC441" sx={{ display: "flex", alignItems: "center" }}>
-            {/* <img src={logo} alt="Logo" style={{ height: 60, marginRight: 16 }} /> */}
-            logo
+            <img src={beneficiaryLogo} alt="Logo" style={{ height: 65, marginRight: 16 }} />
+            {/* logo */}
           </Typography>
 
           <Box sx={{ display: { xs: "block", sm: "none" } }}>
