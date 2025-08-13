@@ -16,7 +16,7 @@ import config from "../../config.js";
 import CloseIcon from "@mui/icons-material/Close";
 import Swal from "sweetalert2"
 
-const BeneficiaryRequestModal = ({ open, onClose }) => {
+const BeneficiaryRequestModal = ({ open, onClose, onTokenReceived }) => {
   const {
     control,
     handleSubmit,
@@ -32,13 +32,12 @@ const BeneficiaryRequestModal = ({ open, onClose }) => {
 
   const onSubmit = async (data) => {
     try {
-      setLoading(true);
+      setLoading(true)
       const res = await axios.post(`${config.baseURL}/receptionist`, data, {
         headers: {
           Authorization: `Bearer ${Cookies.get("token")}`,
         },
       })
-      console.log(res)
       setSnackbar({
         open: true,
         message: "Application Submitted successfully",
@@ -46,11 +45,13 @@ const BeneficiaryRequestModal = ({ open, onClose }) => {
       });
       reset()
       onClose()
+      const token = res.data.token
       Swal.fire({
         title: "Application submitted!",
         icon: "success",
         draggable: true,
-      });
+      })
+      onTokenReceived(token)
     } catch (error) {
         console.log(error)
       setSnackbar({
@@ -127,7 +128,7 @@ const BeneficiaryRequestModal = ({ open, onClose }) => {
                   helperText={errors.cnic?.message}
                   onInput={(e) =>
                     (e.target.value = e.target.value.replace(/[^0-9]/g, ""))
-                  } // Remove non-numeric characters
+                  }
                 />
               )}
             />

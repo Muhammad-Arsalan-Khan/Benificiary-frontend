@@ -80,8 +80,8 @@ function ViewDetailsModal({ open, onClose, application}) {
     addLine("Purpose", application.purpose);
     addLine("Remarks", application.remarks);
 
-    doc.save("loan-details.pdf");
-  };
+    doc.save("BENEFICIARY.pdf");
+  }
 
   const handleApply = async () => {
     try {

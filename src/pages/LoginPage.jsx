@@ -328,14 +328,14 @@ const LoginPage = () => {
         >
           Login
         </Button>
-        <Box sx={{ marginTop: 2 }}>
+        {/* <Box sx={{ marginTop: 2 }}>
           <Typography variant="body2" color="textSecondary" align="center">
             Don't have an account?{" "}
             <Link href="/signup" underline="hover" color="primary">
               Signup
             </Link>
           </Typography>
-        </Box>
+        </Box> */}
       </Box>
 
       {showOtpModal && (

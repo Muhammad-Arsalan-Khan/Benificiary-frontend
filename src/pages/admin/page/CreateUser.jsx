@@ -54,13 +54,13 @@ const CreateUser = () => {
   const onSubmit = async (data) => {
     try {
       setLoading(true);
-      const response = await axios.post(`${config.baseURL}/signup`, data, {
+      const response = await axios.post(`${config.baseURL}/admin/createUser`, data, {
         headers: {
           Authorization: `Bearer ${Cookies.get("token")} `,
         },
-      });
-      const userId = response.data.data;
-      const useremail = response.data.email;
+      })
+      const userId = response.data.data
+      const useremail = response.data.email
       // localStorage.setItem("user_email", useremail)
       setUserId(userId);
       setSnackbar({
@@ -77,7 +77,7 @@ const CreateUser = () => {
         title: "User Created",
         showConfirmButton: false,
         timer: 1500,
-      });
+      })
     } catch (err) {
       console.log(err);
       setLoading(false);

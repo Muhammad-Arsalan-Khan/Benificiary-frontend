@@ -113,6 +113,10 @@ function DeparmentContent() {
         open={snackbar.open}
         autoHideDuration={4000}
         onClose={() => setSnackbar({ ...snackbar, open: false })}
+        anchorOrigin={{
+          vertical: "top",   
+          horizontal: "left"
+        }}
       >
         <Alert
           severity={snackbar.severity}

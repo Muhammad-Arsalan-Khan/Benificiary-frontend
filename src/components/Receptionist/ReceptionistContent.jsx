@@ -39,7 +39,7 @@ function ReceptionistContent() {
         open: true,
         message: "Search successful!",
         severity: "success",
-      });
+      })
     } catch (error) {
       console.log(error);
       setSnackbar({
@@ -65,7 +65,13 @@ function ReceptionistContent() {
 
   const handleCloseBeneficiaryRequestModal = () => {
     setOpenBeneficiaryRequestModal(false)
-  };
+  }
+
+   const handleTokenReceived = (newToken) => {
+    console.log("Received Token", newToken)
+    setSearchTerm(newToken)
+    handleSearch()
+  }
 
   return (
     <>
@@ -131,6 +137,10 @@ function ReceptionistContent() {
         open={snackbar.open}
         autoHideDuration={4000}
         onClose={() => setSnackbar({ ...snackbar, open: false })}
+        anchorOrigin={{
+          vertical: "top",   
+          horizontal: "left"
+        }}
       >
         <Alert
           severity={snackbar.severity}
@@ -141,7 +151,7 @@ function ReceptionistContent() {
       </Snackbar>
 
       {ViewDetail && <ViewDetailModal open={openDetailModal} onClose={handleCloseDetailModal} item={selectedItem} />}
-      {openBeneficiaryRequestModal && <BeneficiaryRequestModal open={openBeneficiaryRequestModal} onClose={handleCloseBeneficiaryRequestModal} />}
+      {openBeneficiaryRequestModal && <BeneficiaryRequestModal open={openBeneficiaryRequestModal} onClose={handleCloseBeneficiaryRequestModal} onTokenReceived={handleTokenReceived} />}
     </>
   );
 }
